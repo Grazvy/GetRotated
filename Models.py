@@ -9,6 +9,7 @@ class RotationNN(nn.Module):
         self.size = size
         self.fc = nn.Linear(size, size)
         self.sigmoid = nn.Sigmoid()
+        self._initialize_weights()
 
     def _initialize_weights(self):
         init.normal_(self.fc.weight, mean=0.0, std=1 / math.sqrt(self.size))
