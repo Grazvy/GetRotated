@@ -1,0 +1,2 @@
+def rotate(image):
+    pass
