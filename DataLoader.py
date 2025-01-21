@@ -1,4 +1,6 @@
+import torch
 import numpy as np
+
 class DataLoader:
     def __init__(self, image_size, n_samples, batch_size):
         self.image_size = image_size
@@ -9,18 +11,21 @@ class DataLoader:
 
     def _generate_data(self):
         self.data = np.random.uniform(0, 1, (self.n_samples, self.image_size, self.image_size))
+        self.data = torch.tensor(self.data, dtype=torch.float32)
 
     def __iter__(self):
         self.current_index = 0
-        np.random.shuffle(self.indices)  # Shuffle indices at the start of each epoch
+        self._generate_data()   # generate new data every epoch
         return self
 
     def __next__(self):
         if self.current_index >= self.n_samples:
             raise StopIteration
+
         batch_indices = self.indices[self.current_index:self.current_index + self.batch_size]
         batch_data = self.data[batch_indices]
         self.current_index += self.batch_size
+
         return batch_data, None
 
     def __len__(self):

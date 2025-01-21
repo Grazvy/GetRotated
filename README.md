@@ -1,6 +1,6 @@
 # GetRotated
 
-- Using a neural network to rotate images, because I can
+- Using a neural network to rotate images, just for fun
 
 ### modeling choices 
 

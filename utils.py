@@ -26,7 +26,7 @@ def line_image(n, thickness=2):
     line_image = np.zeros((n, n))
     center_col = n // 2
 
-    if thickness % 2 != 0 or center_col % 2 != 0:
+    if thickness % 2 != 0 or n % 2 != 0:
         raise ValueError("Image shapes must be odd.")
 
     for row in range(center_col, -1, -1):
