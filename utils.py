@@ -1,13 +1,24 @@
+import torch
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 
 
 def rotate_images(images, degrees=-20):
-    return np.array([rotate(image, degrees, reshape=False, order=2) for image in images])
+    rotated = []
 
-def plot_image(image):
-    plt.imshow(image, cmap="gray")
+    for image in images:
+        image = rotate(image, degrees, reshape=False, order=2)
+        image = np.clip(image, 0, 1)
+        rotated.append(image)
+
+    return torch.tensor(np.array(rotated), dtype=torch.float32)
+
+
+def plot_image(image, colorbar=False):
+    plt.imshow(image.detach(), cmap="gray")
+    if colorbar:
+        plt.colorbar()
     plt.show()
 
 
@@ -22,4 +33,4 @@ def line_image(n, thickness=2):
         for i in range(thickness):
             line_image[row, center_col - thickness // 2 + i] = 1
 
-    return line_image
+    return torch.tensor(line_image, dtype=torch.float32)
