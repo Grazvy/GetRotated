@@ -1,7 +1,6 @@
 import numpy as np
 class DataLoader:
     def __init__(self, image_size, n_samples, batch_size):
-        # todo remove batch size?
         self.image_size = image_size
         self.n_samples = n_samples
         self.batch_size = batch_size
@@ -9,8 +8,7 @@ class DataLoader:
         self._generate_data()
 
     def _generate_data(self):
-        #todo
-        self.data = None
+        self.data = np.random.uniform(0, 1, (self.n_samples, self.image_size, self.image_size))
 
     def __iter__(self):
         self.current_index = 0
