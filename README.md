@@ -4,10 +4,11 @@
 
 ### modeling choices 
 
-- SGD, since every data instance contains the same operation
+- SGD, because every data instance contains the same operation
 
-- a single fully connected layer, since every pixel should be shifted once
+- a single fully connected layer, as every pixel should be shifted once
 
+- start with zero bias, since it's not necessary for an optimal solution
 
 ## Results
 

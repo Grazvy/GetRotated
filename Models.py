@@ -8,13 +8,14 @@ class RotationNN(nn.Module):
         super(RotationNN, self).__init__()
         self.size = size
         self.fc = nn.Linear(size, size)
-        self.sigmoid = nn.Sigmoid()
-        self._initialize_weights()
+        self.relu = nn.ReLU()
+        #self._initialize_weights()
 
     def _initialize_weights(self):
         init.normal_(self.fc.weight, mean=0.0, std=1 / math.sqrt(self.size))
+        init.zeros_(self.fc.bias)
 
     def forward(self, x):
         x = self.fc(x)
-        x = self.sigmoid(x)
+        x = self.relu(x)
         return x
