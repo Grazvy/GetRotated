@@ -49,16 +49,17 @@ class UniformNoiseLoader(DataLoader):
 
 
 class FixedPointsLoader(DataLoader):
-    def __init__(self, image_size, n_samples, batch_size, n_points=10, degrees=-20):
+    def __init__(self, image_size, n_samples, batch_size, n_points=10, min_value=0, degrees=-20):
         super(FixedPointsLoader, self).__init__(image_size, n_samples, batch_size, degrees)
         self.n_points = n_points
+        self.min_value = min_value
 
     def _generate_data(self):
         x = np.zeros((self.n_samples, self.image_size, self.image_size))
 
         for i in range(self.n_samples):
             x_coords, y_coords = np.random.randint(0, self.image_size, size=(2, self.n_points))
-            values = np.random.uniform(0, 1, size=self.n_points)
+            values = np.random.uniform(self.min_value, 1, size=self.n_points)
             x[i, x_coords, y_coords] = values
 
         y = rotate_images(x, self.degrees)
