@@ -5,6 +5,14 @@ import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 
 
+def rotate_flat_image(image, degrees):
+    n = int(math.sqrt(len(image)))
+    image = image.detach().view(n, n)
+    image = rotate(image, degrees, reshape=False, order=2)
+    rotated = np.clip(image, 0, 1)
+
+    return rotated
+
 def rotate_images(images, degrees):
     rotated = []
 
@@ -16,9 +24,11 @@ def rotate_images(images, degrees):
     return np.array(rotated)
 
 
-def plot_image(image, colorbar=False):
-    n = int(math.sqrt(image.size(0)))
-    image = image.detach().view(n, n)
+def plot_image(image, reshape=True, colorbar=False):
+    if reshape:
+        n = int(math.sqrt(image.size(0)))
+        image = image.detach().view(n, n)
+
     plt.imshow(image, cmap="gray")
     if colorbar:
         plt.colorbar()
