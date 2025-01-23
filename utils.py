@@ -2,6 +2,7 @@ import torch
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
 from scipy.ndimage import rotate
 
 
@@ -12,6 +13,7 @@ def rotate_flat_image(image, degrees):
     rotated = np.clip(image, 0, 1)
 
     return rotated
+
 
 def rotate_images(images, degrees):
     rotated = []
@@ -47,3 +49,9 @@ def line_image(n, thickness=2):
             line_image[row, center_col - thickness // 2 + i] = 1
 
     return torch.tensor(line_image, dtype=torch.float32).flatten()
+
+
+def cat_image():
+    car = np.array(Image.open('resources/cat.jpg'))
+    car = 1 - (0.2989 * car[:, :, 0] + 0.5870 * car[:, :, 1] + 0.1140 * car[:, :, 2]) / 255
+    return torch.tensor(car, dtype=torch.float32).flatten()
