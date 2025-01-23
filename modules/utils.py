@@ -52,6 +52,16 @@ def line_image(n, thickness=2):
 
 
 def cat_image():
-    car = np.array(Image.open('resources/cat.jpg'))
+    car = np.array(Image.open('../resources/cat.jpg'))
     car = 1 - (0.2989 * car[:, :, 0] + 0.5870 * car[:, :, 1] + 0.1140 * car[:, :, 2]) / 255
     return torch.tensor(car, dtype=torch.float32).flatten()
+
+
+def plot_line_rotation(rotations=17):
+    # todo
+    pass
+
+
+def plot_cat_rotation(rotations=17):
+    # todo
+    pass
