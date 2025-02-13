@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from utils import rotate_images
+from modules.utils import rotate_images
 
 
 class DataLoader:
