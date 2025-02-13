@@ -17,32 +17,15 @@ repeated with its output, until I achieved a whole rotation.
 In the final model, the results are almost identical to scipy's image rotation, 
 showing that the model correctly learned the mapping for each pixel
 
+| **Scipy** | **Neural Network** |
+|:---------------------------------------------:|:----------------------------------------------:|
+| ![Rotating Line](resources/rotating_line_sy.gif) | ![Another Animation](resources/rotating_line.gif) |
 
-<div style="display: flex; align-items: center;">
-  <figure style="text-align: center; margin-right: 20px;">
-    <figcaption>Scipy:</figcaption>
-    <img src="resources/rotating_line_sy.gif" width="200" height="200">
-  </figure>
-  
-  <figure style="text-align: center;">
-    <figcaption>Neural Network:</figcaption>
-    <img src="resources/rotating_line.gif" width="200" height="200">
-  </figure>
-</div>
+<br>
 
-<br><br><br>
-
-<div style="display: flex; align-items: center;">
-  <figure style="text-align: center; margin-right: 20px;">
-    <figcaption>Scipy:</figcaption>
-    <img src="resources/rotating_cat_sy.gif" width="200" height="200">
-  </figure>
-  
-  <figure style="text-align: center;">
-    <figcaption>Neural Network:</figcaption>
-    <img src="resources/rotating_cat.gif" width="200" height="200">
-  </figure>
-</div>
+| **Scipy** | **Neural Network** |
+|:---------------------------------------------:|:----------------------------------------------:|
+| ![Rotating Line](resources/rotating_cat_sy.gif) | ![Another Animation](resources/rotating_cat.gif) |
 
 <br><br><br>
 
